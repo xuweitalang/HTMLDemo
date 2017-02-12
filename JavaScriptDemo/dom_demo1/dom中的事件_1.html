@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <input type="text" id="one">
+</body>
+    <script type="text/javascript">
+        var txt = document.getElementById("one");
+        txt.onblur = function() {
+            alert("失去焦点");
+        }
+        txt.onfocus = function() {
+            alert("获取焦点");
+        }
+    </script>
+</html>

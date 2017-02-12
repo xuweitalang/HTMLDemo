@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<!--框架标签(单独存在，不在head标签中，也不在body标签中)：将一个页面分为多个部分，rows表示分为上下部分，上面占20%，‘*’表示剩余的部分-->
+<frameset rows="20%,*">
+    <!--上部的子窗体-->
+    <frame src="html_test.html"/>
+
+    <!--下部的子窗体继续分为左右两个部分-->
+    <frameset cols="50%,*">
+        <frame src="list_html5.html">
+        <frame src="list_html5.html">
+    </frameset>
+</frameset>
+
+<body>
+
+</body>
+</html>

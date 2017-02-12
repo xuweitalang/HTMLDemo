@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, user-scalable=no" />
+		<title>ichartjs</title>
+		<script type="text/javascript" src="ichart.1.2.min.js"></script>
+  		<script type="text/javascript" src="LDChart.js"></script>
+		<link type="text/css" href="../css/common.css" rel="stylesheet" />
+</head>
+<body>
+	<div id='canvasDiv'></div>
+
+	<script type="text/javascript">
+
+			function initChart(title, data){
+				chart = new iChart.Pie3D({
+					render : 'canvasDiv',
+					data: data,
+					title : getTitleJson(),
+					offset_angle:10,
+					//padding:5,
+					//yHeight:50,
+					radius:'80%',//设置半径为最小有效区域的80%
+					offsety:-20,
+					align:'center',
+					fit:true,
+					//shadow:false,
+					//shadow_color : '#20262f',
+					//shadow_blur : 4,
+					//shadow_offsetx : 0,
+					//shadow_offsety : 2,
+					border:false,
+					background_color:null,
+					showpercent:true,
+					decimalsnum:1, 
+					animation : true,//开启过渡动画
+					animation_duration:600,//600ms完成动画
+					legend : {
+						enable : isLegend,
+						column:3,
+						/*background_color:'rgba(61,67,75,0.2)',
+						background_color:null,
+						color:'#000000',
+						fontsize:26,//文本大小
+						sign_size:26,//小图标大小
+						padding:"12 20 2 20",//设置内边距
+						line_height:30,//设置行高
+						sign_space:20,//小图标与文本间距
+						border : {
+							enable : true,
+							color : '#666666',
+							style : 'solid',
+							width : 2,
+							radius : 6
+						},*/
+						//legend_space:20,//图例间距
+						valign:'bottom',
+						align : 'center'
+					},
+					sub_option : {
+						border:{
+							enable:false
+						},
+						label : {
+							sign:false/*,//设置禁用label的小图标
+							color:'#000000',
+							fontsize:26,
+							line_thickness:2,
+							background_color:'#eeeeee',//透明背景
+							//padding:'0 4',
+							//line_height:10,
+							padding:4,
+							border:{
+								enable:true,
+								radius : 6,//圆角设置
+								style : 'solid',
+								width : 2,
+								color:'#666666'
+							}*/
+						},
+						listeners:{
+							parseText:function(d, t){
+								var value = d.get('value');
+								value = value.replace('.0%', '%');
+								return value;
+							}
+						}
+					}
+				});
+				
+			}
+
+			function showChart(json, style){
+				showLDChart(json, style, 'Pie3D');
+				initChart(title, data);
+				chart.draw();
+			}
+
+			var data = {title:'3D饼图',
+						data:[
+								{name : '11月',value : 42,color:'#CD4C43'},
+								{name : '222月',value : 30,color:'#ECBD31'},
+								{name : '333月',value : 10,color:'#9bb60f'}
+							]
+						};
+			showChart(data, null);
+			showChart(null);
+			showChart('Loading');
+
+	</script>
+</body>
+</html>

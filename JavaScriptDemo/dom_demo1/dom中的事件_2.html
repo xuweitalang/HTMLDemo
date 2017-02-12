@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <input type="text" id="one">
+</body>
+    <script type="text/javascript">
+        var txt = document.getElementById("one");
+        /**
+         * @param event:封装了事件发生的详情
+         * keyCode：按下按键的Unicode码
+         */
+        txt.onkeydown = function(event) {
+            var key = event.keyCode;
+            if(key==13) { //13为按下回车键是的事件编码
+                alert("表单已提交");
+            }
+        }
+    </script>
+</html>

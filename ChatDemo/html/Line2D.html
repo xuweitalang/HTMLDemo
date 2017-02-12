@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, user-scalable=no" />
+		<title>ichartjs</title>
+		<script type="text/javascript" src="ichart.1.2.min.js"></script>
+  		<script type="text/javascript" src="LDChart.js"></script>
+		<link type="text/css" href="../css/common.css" rel="stylesheet" />
+</head>
+<body>
+	<div id='canvasDiv'></div>
+
+		<script type="text/javascript">
+
+			function initChart(title, data, labels){
+				chart = new iChart.LineBasic2D({
+							render : 'canvasDiv',
+							data: data,
+							title : getTitleJson(),
+							fit:true,
+//							border:false,
+							animation : true,//开启过渡动画
+							animation_duration:600,//600ms完成动画
+							background_color:null,
+							legend : {
+								enable : isLegend,
+								column : 2,
+								valign:'top',
+								sign:'bar',
+								background_color:null,//设置透明背景
+								offsety:-40,
+								offsetx:20,
+								border : false,
+								color:textColor
+							},
+							coordinate:{
+								/*axis : {
+									color : null,
+									width : [1, 1, 1, 1]
+								},
+								gridHStyle:{
+									color : null
+								},
+								gridVStyle:{
+									width:0
+								},*/
+
+								scale:[{
+									position:'left',
+									scale_color:textColor,
+									scaleAlign:'left',
+									offsetx:-2,
+									scale_space:scaleSpace,
+									start_scale : 0,
+									end_scale : endScale,
+									scale_size:0,
+									label : {
+										color:textColor,
+										rotate:rotateY
+									}
+								},{
+									position:'bottom',
+									labels:labels,
+									label : {
+										rotate:rotate,
+										textAlign:(rotate == 0 ? 'center' : 'right'),
+										offsety : (isSmall ? -5 : 0),
+										color:textColor
+									},
+									offsety:2,
+									scale_color:textColor,
+									scale_size:1
+								}],
+								height:'90%',
+								width:'94%',
+								offsety:-15,
+								offsetx:13,
+								background_color : null
+							},
+							
+							sub_option:{
+								label:false,
+								//hollow:false,
+								//hollow_inside:true,//设置一个点的亮色在外环的效果
+								hollow_color:null
+//								point_size:6
+							},
+							labels:labels
+						});
+			
+			}
+
+			function showChart(json, style){
+				showLDChart(json, style, 'Line2D');
+				initChart(title, data, labels);
+				chart.draw();
+			}
+
+			var style = {isSmall:true,
+							textColor:'#ff0000'
+						};
+			var json = {title:'折线图',
+						data:[{name : '数据', value:[2,2,3,3,500,5], color:'#1f7e92', line_width:2}],
+						labels:["一月","二月","三月","四月","五月","六月"]
+						};
+			showChart(json, style);
+//			showChart(null);
+//			showChart('Loading');
+			</script>
+
+		</body>
+</html>

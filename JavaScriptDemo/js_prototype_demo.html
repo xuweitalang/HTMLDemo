@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script type="text/javascript" src="js_prototype_demo.html"></script>
+
+    <script type="text/javascript">
+
+
+        String.prototype.heihei = function () {  //给字符串String的原型添加新的方法trims
+            var start = 0;
+            var end = this.length - 1;
+            while (start <= end && this.charAt(start) == " ") {
+                start ++;
+            }
+            while (start <= end && this.charAt(end)==" ") {
+                end--;
+            }
+            return this.substring(start, end);
+        };
+
+        var a = "      zhangsanlisi    ";
+        alert("-"+ a.heihei()+"-");
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+    //    show(1, 2, 3, 5, 6);
+
+    function show() {
+//        alert("hello function");
+        /**
+         * js函数中内置了一个参数数组，用于存储接收到的实际参数，数组名为arguements
+         */
+        for (var i = 0; i < arguments.length; i++) {
+            document.write(arguments[i] + ",");
+        }
+    }
+    document.write("<br/>");
+    //    show("张三", "李四", "王五");
+
+
+    /**
+     * js函数在内存中实际上是一个对象，函数名就是指向这个对象的引用。
+     * @returns {number}
+     */
+    function method() {
+        return 100;
+    }
+    //    var a = method(); //运行method()方法，将运算结果返回给a
+    var a = method; //将method引用存储的对象的地址赋给a，那么a也指向了这个函数的对象。
+    //    alert("a="+a); //这里直接弹出a，a指向的对象转成字符串，其实就是调用了toString方法，函数对象的字符串表现形式实际就是函数的定义形式。
+
+    //    alert("a="+a()); //运行的是method方法
+
+
+</script>
+</body>
+</html>

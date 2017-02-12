@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no"/>
+    <title>ichartjs</title>
+    <script type="text/javascript" src="ichart.1.2.min.js"></script>
+    <script type="text/javascript" src="LDChart.js"></script>
+    <link type="text/css" href="common.css" rel="stylesheet"/>
+</head>
+<body>
+<div id='canvasDiv'></div>
+
+<script type="text/javascript">
+
+    function initChart(title, data) {
+        chart = new iChart.Column2D({
+            render: 'canvasDiv',
+            data: data,
+            title: getTitleJson(),
+
+            fit: true,
+            border: false,
+            align: 'center',
+            label: {
+                fontsize: (isSmall ? fontsizeS : fontsizeN),
+                color: textColor,
+                offsety: (isSmall ? -5 : 0),
+                textAlign: (rotate == 0 ? 'center' : 'right')
+            },
+            shadow: false,
+            shadow_blur: 2,
+            shadow_color: '#aaaaaa',
+            shadow_offsetx: 1,
+            shadow_offsety: 0,
+            animation: true,//开启过渡动画
+            animation_duration: 600,//600ms完成动画
+            background_color: null,
+
+            legend: {
+                enable: isLegend,
+                column: (isSmall ? 1 : 3),
+                background_color: null,
+                border: false,
+                align: (isSmall ? 'right' : 'center'),
+                valign:(isSmall ? 'center' : 'bottom'),
+                line_height: 20,//设置行高
+                legend_space: 10,//图例间距
+                sign_space: 5,//小图标与文本间距
+                fontsize: fontsizeN,
+                sign_size: fontsizeN,//小图标大小
+                color: textColor
+            },
+
+            sub_option: {
+                /*listeners : {
+                 parseText : function(r, t) {
+                 return t + "%";
+                 }
+                 },,
+                 border : {
+                 width : 2,
+                 color : '#ffffff'
+                 },
+                 */
+                label: {
+                    fontsize: (isSmall ? 0 : fontsizeN),
+                    fontweight: 600,
+                    color: textColor
+                }
+            },
+            coordinate: {
+                background_color: null,
+                gridlinesVisible: false,
+                width: isSmall ? '60%' : '80%',
+                height: isSmall ? '80%' : '70%',
+                offsetx: isSmall ? -30 : 0,
+                offsety: -15,
+                axis: {
+                    color: textColor,
+                    width: [0, 0, 1, 1]
+                },
+                scale: [{
+                    position: 'left',
+                    scale_color: textColor,
+                    scaleAlign: 'left',
+                    offsetx: -2,
+                    scale_space: scaleSpace,
+                    start_scale: 0,
+                    end_scale: endScale,
+                    /*
+                     scale_share:6,
+                     scale_enable : true,
+                     */
+                    label: {
+                        //fontsize:16,
+                        fontweight: 300,
+                        color: textColor,
+                        rotate: rotateY
+                    }
+                }]
+            }
+        });
+    }
+
+    function showChart(json, style) {
+        showLDChart(json, style, 'Column2D');
+        initChart(title, data);
+        chart.draw();
+    }
+
+    var json = {
+        title: '柱状图',
+        data: [
+            {name: '社会公众举报', value: 0, color: '#CD4C43'},
+            {name: '巡查上报', value: 30, color: '#ECBD31'},
+            {name: '媒体曝光', value: 10, color: '#9bb60f'},
+            {name: '网上举报', value: 5, color: '#ECBD31'},
+            {name: '12319热线', value: 7, color: '#9bb60f'}
+        ]
+    };
+    var style = {//isSmall:true,
+        textColor: '#0000ff'
+    };
+    showChart(json, style);
+//    showChart('Loading', style);
+//    showChart(null);
+</script>
+</body>
+</html>

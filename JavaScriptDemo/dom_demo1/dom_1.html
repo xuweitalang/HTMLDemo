@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>dom01</title>
+
+    <script type="text/javascript">
+        /**
+         * dom的所有对象会在页面打开时，由浏览器负责创建；
+         * 如何获得这些dom对象：浏览器会把dom的定点对象Document对象的引用交给Window对象；
+         * 获得方式：window.document(也可以直接写document)
+         */
+
+//        var doc = window.document;
+        var doc = document;
+        alert(doc);
+    </script>
+</head>
+<body>
+
+<div id="one" class="two" ></div>
+</body>
+    <script type="text/javascript">
+        //element的获得
+        var div1 = document.getElementById("one"); //方式一
+        var div2 = document.getElementsByTagName("div")[0];
+        var div3 = document.getElementsByClassName("two")[0];
+        alert(div1==div2);
+        alert(div3==div2);
+    </script>
+</html>

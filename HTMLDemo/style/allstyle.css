@@ -1,0 +1,3 @@
+/*可以将多个样式文件导入*/
+@import "div.css";
+@import "span.css";

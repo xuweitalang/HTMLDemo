@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no"/>
+    <title>ichartjs</title>
+    <script type="text/javascript" src="ichart.1.2.min.js"></script>
+    <script type="text/javascript" src="LDChart.js"></script>
+    <link type="text/css" href="common.css" rel="stylesheet"/>
+</head>
+<body>
+<div id='canvasDiv'></div>
+
+<script type="text/javascript">
+
+    function initChart(title, data) {
+        chart = new iChart.Column2D({
+            render: 'canvasDiv',
+            data: data,
+            title: getTitleJson(),
+
+            fit: true,
+            border: {
+                enable: isSmall,
+                color: textColor,
+                style: 'solid'
+            },
+            align: 'center',
+            label: {
+                fontsize: (isSmall ? fontsizeS : fontsizeN),
+                //fontweight:600,
+                color: textColor,
+                rotate: rotate,
+                offsety: (isSmall ? -5 : 0),
+                textAlign: (rotate == 0 ? 'center' : 'right')
+            },
+            shadow: false,
+            shadow_blur: 2,
+            shadow_color: '#aaaaaa',
+            shadow_offsetx: 1,
+            shadow_offsety: 0,
+            animation: true,//开启过渡动画
+            animation_duration: 600,//600ms完成动画
+            background_color: null,
+            sub_option: {
+                /*listeners : {
+                 parseText : function(r, t) {
+                 return t + "%";
+                 }
+                 },,
+                 border : {
+                 width : 2,
+                 color : '#ffffff'
+                 },
+                 */
+                label: {
+                    fontsize: (isSmall ? 0 : fontsizeN),
+                    fontweight: 600,
+                    color: textColor
+                }
+            },
+            coordinate: {
+                background_color: null,
+                //grid_color : '#ff0000',
+                gridlinesVisible: false,
+                width: isSmall ? '80%' : '85%',
+                height: '80%',
+                offsetx: isSmall ? 15 : 20,
+                offsety: -15,
+                axis: {
+                    color: textColor,
+                    width: [0, 0, 1, 1]
+                },
+                scale: [{
+                    position: 'left',
+                    scale_color: textColor,
+                    scaleAlign: 'left',
+                    offsetx: -2,
+                    scale_space: scaleSpace,
+                    start_scale: 0,
+                    end_scale: endScale,
+                    /*
+                     scale_share:6,
+                     scale_enable : true,
+                     */
+                    label: {
+                        //fontsize:16,
+                        fontweight: 300,
+                        color: textColor,
+                        rotate: rotateY
+                    }
+                }]
+            }
+        });
+    }
+
+    function showChart(json, style) {
+        showLDChart(json, style, 'Column2D');
+        initChart(title, data);
+        chart.draw();
+    }
+
+    var json = {
+        title: '柱状图',
+        data: [
+            {name: '111月', value: 0, color: '#CD4C43'},
+            {name: '222月', value: 0, color: '#ECBD31'},
+            {name: '333月', value: 1, color: '#9bb60f'}
+        ]
+    };
+    var style = {//isSmall:true,
+        textColor: '#0000ff'
+    };
+    showChart(json, style);
+    //     showChart('Loading', style);
+    //     showChart(null);
+</script>
+</body>
+</html>

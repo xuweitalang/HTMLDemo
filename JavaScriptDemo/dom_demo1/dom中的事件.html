@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <input type="button" id="one" value="点我">
+
+    <!--给按钮添加点击事件方法2-->
+    <input type="button" id="two" value="点我有惊喜" onclick="alert('heihei')">
+</body>
+    <script type="text/javascript">
+        //演示给id为one的按钮添加点击事件
+
+        /**
+         * 方法1：
+         * @type {HTMLElement}
+         */
+        //1.获得要添加点击事件的元素的对象
+        var btn = document.getElementById("one");
+        //2.给事件添加函数
+        btn.onclick = function() {
+            alert("点击成功");
+        }
+    </script>
+</html>

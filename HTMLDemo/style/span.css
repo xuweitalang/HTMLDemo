@@ -1,0 +1,6 @@
+span {
+    color: #f0cc0f;
+    background-color: #00ff0f;
+    font-size: 20px;
+    flex-flow: column;
+}

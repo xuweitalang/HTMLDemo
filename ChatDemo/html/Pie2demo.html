@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no"/>
+    <title>ichartjs</title>
+    <script type="text/javascript" src="ichart.1.2.min.js"></script>
+    <script type="text/javascript" src="LDChart.js"></script>
+    <link type="text/css" href="common.css" rel="stylesheet"/>
+</head>
+<body>
+<div id='canvasDiv'></div>
+
+<script type="text/javascript">
+
+    function initChart(title, data){
+        var legendPadding = isSmall ? '0 -16 -10 -16' : '0 0 0 0';
+        chart = new iChart.Pie2D({
+            render : 'canvasDiv',
+            data: data,
+            title : getTitleJson(),
+            offset_angle:10,
+            radius:'90%',//设置半径为最小有效区域的80%
+            offsety:-10,
+            align:'center',
+            fit:true,
+            /*border : {
+             enable : isSmall,
+             color : textColor,
+             style : 'solid'
+             },*/
+            border:false,
+            background_color:null,
+            showpercent:true,
+            decimalsnum:1,
+            animation : true,//开启过渡动画
+            animation_duration:600,//600ms完成动画
+            legend : {
+                enable : isLegend,
+                column:3,
+                fontsize:(isSmall ? fontsizeS : fontsizeN),
+                sign_size:(isSmall ? fontsizeS : fontsizeN),
+                background_color:null,
+                border:false,
+                padding:legendPadding,
+                line_height:(isSmall ? 10 : 20),//设置行高
+                legend_space:(isSmall ? 2 : 10),//图例间距
+                sign_space:(isSmall ? 1 : 5),
+                color:textColor,
+                /*//小图标大小
+                 padding:"12 20 2 20",//设置内边距
+                 //小图标与文本间距
+                 border : {
+                 enable : true,
+                 color : '#666666',
+                 style : 'solid',
+                 width : 2,
+                 radius : 6
+                 },*/
+                valign:'bottom',
+                align : 'center'
+            },
+            sub_option : {
+                border:{
+                    enable:false
+                },
+                //label:false,
+                label : {
+                    sign:false,//设置禁用label的小图标
+                    background_color:null,
+                    color:textColor,
+                    fontsize:12,
+                    line_thickness:1,
+                    border:{
+                        enable:false,
+                        //radius : 6,//圆角设置
+                        style : 'solid',
+                        width : '0 0 1 0',
+                        color:textColor
+                    },
+                    padding:'0 -2 0 -2'
+                },
+                listeners:{
+                    parseText:function(d, t){
+                        var value = d.get('value');
+                        value = value.replace('.0%', '%');
+                        return value;
+                    }
+                }
+            }
+        });
+
+    }
+
+    function showChart(json, style) {
+        showLDChart(json, style, 'Pie2D');
+        initChart(title, data);
+        chart.draw();
+    }
+
+    var json = {
+        title: '2D饼图',
+        data: [
+            {name: '社会公众举报', value: 42, color: '#CD4C43'},
+            {name: '巡查上报', value: 30, color: '#ECBD31'},
+            {name: '媒体曝光', value: 10, color: '#9bb60f'},
+            {name: '网上举报', value: 5, color: '#ECBD31'},
+            {name: '12319热线', value: 7, color: '#9bb60f'}
+        ]
+    };
+    var style = {
+        isSmall: true,
+        isLegend: true,
+        textColor: '#ff0000'
+    };
+    showChart(json, style);
+    //     showChart(null);
+    //     showChart('Loading');
+</script>
+</body>
+</html>

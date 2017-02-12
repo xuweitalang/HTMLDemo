@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>html中使用css样式</title>
+
+    <!--为了提高程序的复用性，将共用的样式属性可以抽取出来，并明确要作用的标签，如下面作用于div标签,
+    样式标签用style，样式标签一般写在head标签中-->
+
+    <style type="text/css">
+        div {
+            color: aqua;
+            background-color: blue;
+            width: auto;
+            height: 100px;
+            font-size: 20px
+        }
+    </style>
+</head>
+<body>
+
+<div>div区域1</div><br/>
+<div>div区域2</div>
+<!--div标签默认会先加载先定义好的样式，如果div标签中单独定义了样式，会覆盖掉定义好的样式-->
+<div style="color: #f0f0ee; font-size: 40px">div区域2</div>
+</body>
+</html>

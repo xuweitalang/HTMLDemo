@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script type="text/javascript">
+
+        //动态函数，使用js中已有的内置对象(方法一)
+//        var getSum = new Function("a,b", "var sum=a+b;return sum;"); //第一个字符串是参数，第二个字符串是方法体
+
+        //静态方法（方法二）
+        /*方法一与方法二的区别：方法一动态函数的参数列表和函数体都是可以通过参数指定的*/
+//        function getSum(x,y) {
+//            var sum = x+y;
+//            return sum;
+//        }
+//
+//        var sum = getSum(1, 3);
+//        alert("sum="+sum);
+
+
+        //匿名函数
+        var qq = function (a, b) {
+            var v = a+b;
+            return alert(v);
+        }
+        qq(3,5);
+
+
+
+        //在script中创建的变量即使定义在语句中也是全局变量，定义在方法中的变量是局部变量
+        function mothod2() {
+            var a = 2; // 局部变量
+        }
+
+
+        var m = 4;
+        function setValue(m) {
+            m = 5;
+        }
+        setValue(m); //m的值为4
+        alert(m);
+    </script>
+</body>
+</html>

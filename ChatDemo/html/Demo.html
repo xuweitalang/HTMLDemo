@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, user-scalable=no" />
+		<title>ichartjs</title>
+		<script type="text/javascript" src="ichart.1.2.min.js"></script>
+		<link type="text/css" href="../css/common.css" rel="stylesheet" />
+</head>
+<body>
+	<div id='canvasDiv'></div>
+
+		<script type="text/javascript">
+		
+			var title = '  ';
+			var data = [
+		        	{name : '   ',value : 0,color:'#ffffff'}
+	        	];
+			var chart = null;
+			var textColor = '#ffffff';
+			function initChart(title, data){
+				var rotate = 0;
+				chart = new iChart.Column2D({
+					render : 'canvasDiv',
+					data : data,
+					title : {
+						text : title,
+						color:textColor
+					},
+					fit:true,
+					border : {
+						enable : true,
+						color : textColor,
+						style : 'solid'
+					},
+					background_color:null,
+					align:'center',
+					label : {
+						color : textColor
+					},
+					coordinate : {
+						background_color : null,
+						gridlinesVisible:false,
+						height : '80%',
+						offsetx:10,
+						offsety:-15,
+						axis : {
+							color : textColor,
+							width : [0, 0, 0, 0]
+						},
+						scale : [{
+							scale_color:textColor,
+							scale_enable : false,
+							scale_size:0,
+							label : {
+								color : textColor,
+								fontsize:0
+							}
+						}]
+					}
+				});
+			}
+
+			initChart(title, data);
+			chart.draw();
+	</script>
+</body>
+</html>
